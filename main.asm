@@ -92,11 +92,10 @@ forever:
 
 ;; VBlank Interrupt (updates graphics each frame)
 nmi:
-  jsr move_sprite  ; Update sprite position
-  jsr draw_sprite  ; Draw sprite to OAM
+  jsr move_sprite
+  jsr draw_sprite
   rti
 
-;; Move the sprite based on velocity
 move_sprite:
   lda pos_x
   clc
@@ -117,7 +116,6 @@ move_sprite:
   bcc reverse_y_direction  ; Reverse if Y < 10
   rts
 
-;; Reverse X direction
 reverse_x_direction:
   lda acc_x
   eor #$ff   ; Flip bits (negate value)
@@ -126,7 +124,6 @@ reverse_x_direction:
   sta acc_x
   rts
 
-;; Reverse Y direction
 reverse_y_direction:
   lda acc_y
   eor #$ff   ; Flip bits (negate value)
@@ -135,7 +132,6 @@ reverse_y_direction:
   sta acc_y
   rts
 
-;; Draw sprite to OAM
 draw_sprite:
   lda #$00 
   sta $2003      ; Set OAM address to 0
@@ -153,7 +149,6 @@ draw_sprite:
   sta $2004      ; Write X position
   rts
 
-;; Color palettes (background and sprite)
 palettes:
   ; Background Palette
   .byte $0f, $00, $00, $00
@@ -162,7 +157,7 @@ palettes:
   .byte $0f, $00, $00, $00
 
   ; Sprite Palette
-  .byte $0f, $20, $00, $00  ; Greenish sprite colors
+  .byte $0f, $20, $00, $00
   .byte $0f, $00, $00, $00
   .byte $0f, $00, $00, $00
   .byte $0f, $00, $00, $00
