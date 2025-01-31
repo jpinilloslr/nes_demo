@@ -1,6 +1,6 @@
 # NES Demo
 
-This is a NES demo for me to understand some of the inner workings of the NES architecture.
+This is an NES demo to help me understand some of the inner workings of the NES architecture. It's also my humble tribute after visiting the Nintendo Development Center in Kyoto.
 
 ## Development environment
 
