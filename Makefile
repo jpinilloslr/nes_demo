@@ -1,15 +1,20 @@
 TARGET = demo.nes
-SOURCE = main.asm
-CC = cl65
+SOURCES = main.asm init.asm palettes.asm alien.asm
+OBJECTS = $(SOURCES:.asm=.o)
+CC = ca65
+LD = ld65
 EMU = fceux
 
 all: $(TARGET)
 
-$(TARGET): $(SOURCE)
-	$(CC) --verbose --target nes -o $(TARGET) $(SOURCE)
+$(TARGET): $(OBJECTS)
+	$(LD) -o $(TARGET) -C nes.cfg $(OBJECTS)
+
+%.o: %.asm
+	$(CC) -o $@ $<
 
 run: $(TARGET)
 	$(EMU) $(TARGET)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJECTS)
