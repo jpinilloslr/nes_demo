@@ -2,6 +2,7 @@
 .include "init.inc"
 .include "palettes.inc"
 .include "chars.inc"
+.include "background.inc"
 .include "alien.inc"
 
 .segment "HEADER"
@@ -32,10 +33,11 @@ reset:
   stx PPU_MASK           ; Disable rendering
   stx APU_DMC_CONTROL    ; Disable DMC IRQs (sound)
   jsr WaitForVBlank      ; Wait for VBlank to stabilize PPU
-  jsr ClearRAM           ; Clear RAM (fill with zeros)
   jsr WaitForVBlank      ; Wait for VBlank a second time as it's more reliable
+  jsr ClearRAM           ; Clear RAM (fill with zeros)
 
 main:
+  jsr LoadBackground
   jsr LoadPalettes
   jsr AlienInitialize
   jsr EnableRendering

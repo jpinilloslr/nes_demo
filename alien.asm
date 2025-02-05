@@ -49,18 +49,19 @@
 
 .proc AlienAnimate
   lda alien_anim_timer  ; Load animation timer
-  clc                   ; Clear carry to ensure clean addition
-  adc #1                ; Increment timer by 1
+  clc                   ; Clear carry
+  adc #1                ; Increment timer
   sta alien_anim_timer  ; Store updated timer
   and #$0F              ; Update every 16 frames
   bne @no_update        ; If not 0, skip frame update
-  lda alien_frame       ; Load current animation frame
-  clc                   ; Clear carry
-  adc #1                ; Increment frame by 1
-  and #$01              ; Limit frame to 0 or 1
-  sta alien_frame       ; Store updated frame
-  lda #0                ; Reset animation timer
-  sta alien_anim_timer  
+  lda alien_frame       ; Load current frame
+  clc
+  adc #1
+  sta alien_frame
+  cmp #3
+  bne @no_update
+  lda #$01
+  sta alien_frame
 @no_update:
   rts
 .endproc

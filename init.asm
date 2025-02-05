@@ -35,7 +35,7 @@
 .proc EnableRendering
   lda #%10000000  ; Enable NMI (VBlank interrupt)
   sta PPU_CTRL
-  lda #%00010000  ; Enable sprites
+  lda #%00011000  ; Enable sprites and background
   sta PPU_MASK
   rts
 .endproc

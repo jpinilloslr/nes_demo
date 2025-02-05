@@ -1,5 +1,5 @@
 TARGET = demo.nes
-SOURCES = main.asm init.asm palettes.asm alien.asm
+SOURCES = main.asm init.asm palettes.asm alien.asm background.asm
 OBJECTS = $(SOURCES:.asm=.o)
 CC = ca65
 LD = ld65

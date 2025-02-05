@@ -1,3 +1,4 @@
+;; palettes.asm
 .include "nes.inc"
 
 .export LoadPalettes
@@ -17,6 +18,9 @@
   inx
   cpx #$20             ; Load 32 bytes
   bne @loop
+  lda #0
+  sta PPU_SCROLL       ; Reset horizontal scroll
+  sta PPU_SCROLL       ; Reset vertical scroll
   rts
 .endproc
 
