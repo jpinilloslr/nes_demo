@@ -37,3 +37,23 @@
   .byte %00000000  
   .byte %00000000  
   .byte %00000000
+
+  ; Sprite 2 Low plane
+  .byte %11001100
+  .byte %11001100
+  .byte %00110011
+  .byte %00110011
+  .byte %11001100
+  .byte %11001100
+  .byte %00110011
+  .byte %00110011
+  ; Sprite 2 High plane
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
+
