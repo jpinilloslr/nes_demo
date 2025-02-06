@@ -71,19 +71,19 @@
   clc
   adc alien_acc_x        ; alien_pos_x += alien_acc_x
   sta alien_pos_x
-  cmp #245
-  bcs ReverseXDirection  ; Reverse if X >= 245
+  cmp #248
+  bcs ReverseXDirection  ; Reverse if X >= 248
   cmp #0
-  bcc ReverseXDirection  ; Reverse if X < 10
+  bcc ReverseXDirection  ; Reverse if X < 0
 
   lda alien_pos_y
   clc
   adc alien_acc_y        ; alien_pos_y += alien_acc_y
   sta alien_pos_y
-  cmp #218
-  bcs ReverseYDirection  ; Reverse if Y >= 218
-  cmp #0
-  bcc ReverseYDirection  ; Reverse if Y < 10
+  cmp #224
+  bcs ReverseYDirection  ; Reverse if Y >= 224
+  cmp #8
+  bcc ReverseYDirection  ; Reverse if Y < 8
   rts
 .endproc
 
