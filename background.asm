@@ -25,5 +25,27 @@
   lda #0
   sta PPU_SCROLL         ; Reset horizontal scroll
   sta PPU_SCROLL         ; Reset vertical scroll
+  jmp LoadAttributeTable ; Load the attribute table
+.endproc
+
+.proc LoadAttributeTable
+  lda PPU_STATUS         ; Reset PPU latch
+
+  lda #$23               ; Set PPU address to $23C0 (Start of Attribute Table)
+  sta PPU_ADDR
+  lda #$C0
+  sta PPU_ADDR
+
+  ldx #$00
+@loop:
+  lda #$00               ; Use Background Palette 0 for all 2x2 tile blocks
+  sta PPU_DATA
+  inx
+  cpx #$40               ; 64 bytes for the full Attribute Table
+  bne @loop
+
+  lda #0
+  sta PPU_SCROLL         ; Reset horizontal scroll
+  sta PPU_SCROLL         ; Reset vertical scroll
   rts
 .endproc

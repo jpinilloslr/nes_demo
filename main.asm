@@ -33,12 +33,12 @@ reset:
   stx PPU_MASK           ; Disable rendering
   stx APU_DMC_CONTROL    ; Disable DMC IRQs (sound)
   jsr WaitForVBlank      ; Wait for VBlank to stabilize PPU
-  jsr WaitForVBlank      ; Wait for VBlank a second time as it's more reliable
   jsr ClearRAM           ; Clear RAM (fill with zeros)
+  jsr WaitForVBlank      ; Wait for VBlank a second time as it's more reliable
 
 main:
-  jsr LoadBackground
   jsr LoadPalettes
+  jsr LoadBackground
   jsr AlienInitialize
   jsr EnableRendering
   jsr GameLoop           ; Infinite loop as it relies on NMI
