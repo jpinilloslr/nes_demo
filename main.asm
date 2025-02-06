@@ -1,7 +1,6 @@
 .include "nes.inc"
 .include "init.inc"
 .include "palettes.inc"
-.include "chars.inc"
 .include "background.inc"
 .include "alien.inc"
 
@@ -47,3 +46,6 @@ nmi:
   jsr AlienUpdate
   rti
 
+;; CHR-ROM data
+.segment "CHARS"
+.incbin "chr-rom.chr"

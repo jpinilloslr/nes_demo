@@ -26,13 +26,13 @@
 
 palettes:
   ; Background Palettes
-  .byte $0F, $00, $00, $00   ; Background Palette 0
+  .byte $0F, $4C, $00, $00   ; Background Palette 0
   .byte $0F, $00, $00, $00   ; Background Palette 1
   .byte $0F, $00, $00, $00   ; Background Palette 2
   .byte $0F, $00, $00, $00   ; Background Palette 3
 
   ; Sprite Palettes
-  .byte $0F, $17, $07, $2A   ; Sprite Palette 0
+  .byte $0F, $2A, $16, $0D   ; Sprite Palette 0
   .byte $0F, $00, $00, $00   ; Sprite Palette 1
   .byte $0F, $00, $00, $00   ; Sprite Palette 2
   .byte $0F, $00, $00, $00   ; Sprite Palette 3

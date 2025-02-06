@@ -58,7 +58,7 @@
   clc
   adc #1
   sta alien_frame
-  cmp #3
+  cmp #4
   bne @no_update
   lda #$01
   sta alien_frame

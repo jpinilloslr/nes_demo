@@ -13,7 +13,7 @@
 
   ldx #$04               ; Outer loop counter (4 pages of 256 bytes)
   ldy #$00               ; Inner loop counter (256 bytes per page)
-  lda #03                ; Tile index to fill the background with
+  lda #04                ; Tile index to fill the background with
 
 @loop:
   sta PPU_DATA           ; Write tile to PPU
