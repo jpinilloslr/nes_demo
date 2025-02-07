@@ -1,8 +1,8 @@
 .ifndef ALIEN_INC
 .define ALIEN_INC
 
-.import AlienInitialize
-.import AlienUpdate
+.import alien_init
+.import alien_update
 
 .endif
 

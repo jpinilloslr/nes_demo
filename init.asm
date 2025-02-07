@@ -1,14 +1,14 @@
 ; Initialization subroutines
 .include "nes.inc"
 
-.export ClearRAM
-.export WaitForVBlank
-.export EnableRendering
-.export GameLoop
+.export clear_ram
+.export wait_for_vblank
+.export enable_rendering
+.export game_loop
 
 .segment "CODE"
 
-.proc ClearRAM
+.proc clear_ram
   ldx #$00
   lda #$00
 @loop:
@@ -25,14 +25,14 @@
   rts
 .endproc
 
-.proc WaitForVBlank
+.proc wait_for_vblank
 @loop:
   bit PPU_STATUS
   bpl @loop
   rts
 .endproc
 
-.proc EnableRendering
+.proc enable_rendering
   lda #%10000000  ; Enable NMI (VBlank interrupt)
   sta PPU_CTRL
   lda #%00011110  ; Enable sprites and background
@@ -40,7 +40,7 @@
   rts
 .endproc
 
-.proc GameLoop
+.proc game_loop
 @forever:
   jmp @forever
 .endproc

@@ -1,11 +1,11 @@
 ;; palettes.asm
 .include "nes.inc"
 
-.export LoadPalettes
+.export load_palettes
 
 .segment "CODE"
 
-.proc LoadPalettes
+.proc load_palettes
   lda PPU_STATUS       ; Reset PPU latch
   lda #$3f
   sta PPU_ADDR         ; Set PPU address to $3F00 (palette memory)
@@ -27,12 +27,12 @@
 palettes:
   ; Background Palettes
   .byte $0F, $4C, $00, $00   ; Background Palette 0
-  .byte $0F, $00, $00, $00   ; Background Palette 1
+  .byte $0F, $08, $2a, $2b   ; Background Palette 1
   .byte $0F, $00, $00, $00   ; Background Palette 2
   .byte $0F, $00, $00, $00   ; Background Palette 3
 
   ; Sprite Palettes
   .byte $0F, $2A, $16, $0D   ; Sprite Palette 0
-  .byte $0F, $00, $00, $00   ; Sprite Palette 1
+  .byte $0F, $15, $38, $0D   ; Sprite Palette 1
   .byte $0F, $00, $00, $00   ; Sprite Palette 2
   .byte $0F, $00, $00, $00   ; Sprite Palette 3

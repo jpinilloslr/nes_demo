@@ -1,10 +1,10 @@
 .include "nes.inc"
 
-.export LoadBackground
+.export load_background
 
 .segment "CODE"
 
-.proc LoadBackground
+.proc load_background
   lda PPU_STATUS         ; Reset PPU toggle (read PPU_STATUS)
   lda #$20               ; Set PPU address high byte ($2000 - Start of Name Table 0)
   sta PPU_ADDR

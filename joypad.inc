@@ -1,0 +1,17 @@
+.ifndef JOYPAD_INC
+JOYPAD_INC = 1
+
+.import joypad1_read
+.importzp joypad1_state
+
+; Controller Button Masks
+BUTTON_A      = %00000001
+BUTTON_B      = %00000010
+BUTTON_SELECT = %00000100
+BUTTON_START  = %00001000
+BUTTON_UP     = %00010000
+BUTTON_DOWN   = %00100000
+BUTTON_LEFT   = %01000000
+BUTTON_RIGHT  = %10000000
+
+.endif

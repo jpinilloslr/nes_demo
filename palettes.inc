@@ -1,6 +1,6 @@
 .ifndef PALETTES_INC
 .define PALETTES_INC
 
-.import LoadPalettes
+.import load_palettes
 
 .endif

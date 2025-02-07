@@ -1,7 +1,7 @@
 .ifndef BACKGROUND_INC
 .define BACKGROUND_INC
 
-.import LoadBackground
+.import load_background
 
 .endif
 

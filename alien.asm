@@ -1,7 +1,7 @@
 .include "nes.inc"
 
-.export AlienInitialize
-.export AlienUpdate
+.export alien_init
+.export alien_update
 
 .segment "ZEROPAGE"
   alien_acc_x:      .res 1
@@ -13,7 +13,7 @@
 
 .segment "CODE"
 
-.proc AlienInitialize
+.proc alien_init
   ldx #$80
   stx alien_pos_x      ; Set X alien_position to 128
   ldx #$30
@@ -26,14 +26,14 @@
   rts
 .endproc
 
-.proc AlienUpdate
-  jsr AlienAnimate
-  jsr AlienMove
-  jsr AlienDraw
+.proc alien_update
+  jsr alien_animate
+  jsr alien_move
+  jsr alien_draw
   rts
 .endproc
 
-.proc AlienDraw
+.proc alien_draw
   lda #$00 
   sta PPU_OAM_ADDR      ; Set OAM address to 0
   lda alien_pos_y
@@ -47,7 +47,7 @@
   rts
 .endproc
 
-.proc AlienAnimate
+.proc alien_animate
   lda alien_anim_timer  ; Load animation timer
   clc                   ; Clear carry
   adc #1                ; Increment timer
@@ -66,28 +66,28 @@
   rts
 .endproc
 
-.proc AlienMove
+.proc alien_move
   lda alien_pos_x
   clc
   adc alien_acc_x        ; alien_pos_x += alien_acc_x
   sta alien_pos_x
   cmp #248
-  bcs ReverseXDirection  ; Reverse if X >= 248
+  bcs reverse_x_dir  ; Reverse if X >= 248
   cmp #0
-  bcc ReverseXDirection  ; Reverse if X < 0
+  bcc reverse_x_dir  ; Reverse if X < 0
 
   lda alien_pos_y
   clc
   adc alien_acc_y        ; alien_pos_y += alien_acc_y
   sta alien_pos_y
   cmp #224
-  bcs ReverseYDirection  ; Reverse if Y >= 224
+  bcs reverse_y_dir  ; Reverse if Y >= 224
   cmp #8
-  bcc ReverseYDirection  ; Reverse if Y < 8
+  bcc reverse_y_dir  ; Reverse if Y < 8
   rts
 .endproc
 
-.proc ReverseXDirection
+.proc reverse_x_dir
   lda alien_acc_x
   eor #$ff               ; Flip bits (negate value)
   clc
@@ -96,7 +96,7 @@
   rts
 .endproc
 
-.proc ReverseYDirection
+.proc reverse_y_dir
   lda alien_acc_y
   eor #$ff
   clc
