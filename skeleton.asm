@@ -79,47 +79,9 @@
 
   ; Is it flipped?
   lda skel_flip
-  cmp #0
-  beq @no_flip
+  cmp #1
+  beq @flip
 
-  ; Write Attributes
-  lda (skel_cur_frame_ptr), y ; Load Attributes
-  ora #%01000000              ; Flip it
-  sta PPU_OAM_DATA            ; Write Attributes to OAM
-  iny                         ; Move to next byte in frame data
-
-  ; Write X position flipped (skel_pos_x + relative X from frame)
-  lda (skel_cur_frame_ptr), y ; Load relative X position
-
-  cmp #0
-  beq @flip_to_24
-  cmp #8
-  beq @flip_to_16
-  cmp #16
-  beq @flip_to_8
-  cmp #24
-  beq @flip_to_0
-
-  @flip_to_24:
-  lda #24
-  jmp @write_flipped_x
-  @flip_to_16:
-  lda #16
-  jmp @write_flipped_x
-  @flip_to_8: 
-  lda #8
-  jmp @write_flipped_x
-  @flip_to_0:
-  lda #0
-
-  @write_flipped_x:
-  clc
-  adc skel_pos_x              ; Add skel_pos_x
-  sta PPU_OAM_DATA            ; Write X position to OAM
-  iny                         ; Move to next byte in frame data
-  jmp @check_next_iter
-
-  @no_flip:
   ; Write Attributes
   lda (skel_cur_frame_ptr), y ; Load Attributes
   sta PPU_OAM_DATA            ; Write Attributes to OAM
@@ -132,10 +94,28 @@
   sta PPU_OAM_DATA            ; Write X position to OAM
   iny                         ; Move to next byte in frame data
 
+  jmp @check_next_iter
+
+  @flip:
+  ; Write Attribute with horizontal flipping
+  lda (skel_cur_frame_ptr), y ; Load Attributes
+  ora #%01000000              ; Flip it
+  sta PPU_OAM_DATA            ; Write Attributes to OAM
+  iny                         ; Move to next byte in frame data
+
+  ; Write X position flipped (skel_pos_x + relative X from frame)
+  lda (skel_cur_frame_ptr), y ; Load relative X position
+  eor #$ff                    ; A = bitwise NOT of x (~x)
+  clc                         ; Clear carry for addition
+  adc #25                     ; A = ~x + 25, which equals 24 - x modulo 256
+  clc
+  adc skel_pos_x              ; Add skel_pos_x
+  sta PPU_OAM_DATA            ; Write X position to OAM
+  iny                         ; Move to next byte in frame data
+
   @check_next_iter:
   cpy #48                     ; Check if 48 bytes have been written (12 sprites * 4 bytes)
   bne @loop                   ; If not, continue writing
-
   rts
 .endproc
 
