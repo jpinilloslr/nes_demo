@@ -11,6 +11,7 @@
   skel_timer:          .res 1
   skel_max_frames:     .res 1
   skel_anim_speed:     .res 1
+  skel_cur_anim_id:    .res 1
   skel_cur_anim_ptr:   .res 2
   skel_cur_frame_ptr:  .res 2
   skel_cur_frame_idx:  .res 1
@@ -31,6 +32,9 @@
   sta skel_cur_anim_ptr + 1
   sta skel_cur_frame_ptr
   sta skel_cur_frame_ptr + 1
+  lda #$ff
+  sta skel_cur_anim_id
+
   jmp skel_set_idle_anim
 .endproc
 
@@ -109,6 +113,9 @@
 .endproc
 
 .proc skel_set_idle_anim
+  lda skel_cur_anim_id
+  cmp SkelIdleAnimId
+  beq @do_nothing
   lda SkelIdleAnimFrames
   sta skel_max_frames
   lda SkelIdleAnimSpeed
@@ -117,6 +124,31 @@
   sta skel_cur_anim_ptr
   lda #>SkelIdleAnimPtr
   sta skel_cur_anim_ptr + 1
+  lda #0
+  sta skel_cur_frame_idx
+  lda SkelIdleAnimId
+  sta skel_cur_anim_id
+  @do_nothing:
+  rts
+.endproc
+
+.proc skel_set_walk_anim
+  lda skel_cur_anim_id
+  cmp SkelWalkAnimId
+  beq @do_nothing
+  lda SkelWalkAnimFrames
+  sta skel_max_frames
+  lda SkelWalkAnimSpeed
+  sta skel_anim_speed
+  lda #<SkelWalkAnimPtr
+  sta skel_cur_anim_ptr
+  lda #>SkelWalkAnimPtr
+  sta skel_cur_anim_ptr + 1
+  lda #0
+  sta skel_cur_frame_idx
+  lda SkelWalkAnimId
+  sta skel_cur_anim_id
+  @do_nothing:
   rts
 .endproc
 
@@ -128,12 +160,12 @@
   lda joypad1_state      ; Load the joypad state
   and #BUTTON_RIGHT      ; Isolate the right button bit
   bne @move_right        ; If the right button is pressed, move right
-  rts
+  jmp skel_set_idle_anim
 
 @move_right:
-  inc skel_pos_x         ; Move the skeleton left (decrement X position)
-  rts
+  inc skel_pos_x
+  jmp skel_set_walk_anim
 @move_left:
-  dec skel_pos_x         ; Move the skeleton left (decrement X position)
-  rts
+  dec skel_pos_x
+  jmp skel_set_walk_anim
 .endproc
