@@ -4,11 +4,11 @@
 .segment "RODATA"
 
 ;; Skeleton idle animation
-SkelIdleAnimSpeed:  .byte 8
-SkelIdleAnimFrames: .byte 6
+SkelIdleAnimSpeed:  .byte 6
+SkelIdleAnimFrames: .byte 8
 SkelIdleAnimPtr:
   .word SkelIdleFrame1, SkelIdleFrame2, SkelIdleFrame3, SkelIdleFrame4
-  .word SkelIdleFrame5, SkelIdleFrame6
+  .word SkelIdleFrame5, SkelIdleFrame6, SkelIdleFrame7, SkelIdleFrame8
 SkelIdleFrame1:
   .byte  0,  5, 1,  0  ; (0, 0)
   .byte  0,  6, 1,  8  ; (8, 0)
@@ -87,6 +87,32 @@ SkelIdleFrame6:
   .byte 16, 66, 1,  8  ; (8, 16)
   .byte 16, 67, 1, 16  ; (16, 16)
   .byte 16, 68, 1, 24  ; (24, 16)
+SkelIdleFrame7:
+  .byte  0, 69, 1,  0  ; (0, 0)
+  .byte  0, 70, 1,  8  ; (8, 0)
+  .byte  0, 71, 1, 16  ; (16, 0)
+  .byte  0,  0, 1, 24  ; (24, 0)
+  .byte  8, 72, 1,  0  ; (0, 8)
+  .byte  8, 73, 1,  8  ; (8, 8)
+  .byte  8, 74, 1, 16  ; (16, 8)
+  .byte  8, 75, 1, 24  ; (24, 8)
+  .byte 16, 76, 1,  0  ; (0, 16)
+  .byte 16, 77, 1,  8  ; (8, 16)
+  .byte 16, 78, 1, 16  ; (16, 16)
+  .byte 16, 79, 1, 24  ; (24, 16)
+SkelIdleFrame8:
+  .byte  0, 80, 1,  0  ; (0, 0)
+  .byte  0, 81, 1,  8  ; (8, 0)
+  .byte  0, 82, 1, 16  ; (16, 0)
+  .byte  0,  0, 1, 24  ; (24, 0)
+  .byte  8, 83, 1,  0  ; (0, 8)
+  .byte  8, 84, 1,  8  ; (8, 8)
+  .byte  8, 85, 1, 16  ; (16, 8)
+  .byte  8, 86, 1, 24  ; (24, 8)
+  .byte 16, 87, 1,  0  ; (0, 16)
+  .byte 16, 88, 1,  8  ; (8, 16)
+  .byte 16, 89, 1, 16  ; (16, 16)
+  .byte 16, 90, 1, 24  ; (24, 16)
 
 .endif
 
