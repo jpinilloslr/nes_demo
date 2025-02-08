@@ -135,6 +135,7 @@
   @check_next_iter:
   cpy #48                     ; Check if 48 bytes have been written (12 sprites * 4 bytes)
   bne @loop                   ; If not, continue writing
+
   rts
 .endproc
 
