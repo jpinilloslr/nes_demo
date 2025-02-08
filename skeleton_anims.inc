@@ -5,10 +5,10 @@
 
 ;; Skeleton idle animation
 SkelIdleAnimSpeed:  .byte 8
-SkelIdleAnimFrames: .byte 5
+SkelIdleAnimFrames: .byte 6
 SkelIdleAnimPtr:
   .word SkelIdleFrame1, SkelIdleFrame2, SkelIdleFrame3, SkelIdleFrame4
-  .word SkelIdleFrame5
+  .word SkelIdleFrame5, SkelIdleFrame6
 SkelIdleFrame1:
   .byte  0,  5, 1,  0  ; (0, 0)
   .byte  0,  6, 1,  8  ; (8, 0)
@@ -74,6 +74,19 @@ SkelIdleFrame5:
   .byte 16, 55, 1,  8  ; (8, 16)
   .byte 16, 56, 1, 16  ; (16, 16)
   .byte 16, 57, 1, 24  ; (24, 16)
+SkelIdleFrame6:
+  .byte  0, 58, 1,  0  ; (0, 0)
+  .byte  0, 59, 1,  8  ; (8, 0)
+  .byte  0, 60, 1, 16  ; (16, 0)
+  .byte  0,  0, 1, 24  ; (24, 0)
+  .byte  8, 61, 1,  0  ; (0, 8)
+  .byte  8, 62, 1,  8  ; (8, 8)
+  .byte  8, 63, 1, 16  ; (16, 8)
+  .byte  8, 64, 1, 24  ; (24, 8)
+  .byte 16, 65, 1,  0  ; (0, 16)
+  .byte 16, 66, 1,  8  ; (8, 16)
+  .byte 16, 67, 1, 16  ; (16, 16)
+  .byte 16, 68, 1, 24  ; (24, 16)
 
 .endif
 
