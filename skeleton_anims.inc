@@ -115,8 +115,7 @@ SkelIdleFrame8:
   .byte 16, 89, 1, 16  ; (16, 16)
   .byte 16, 90, 1, 24  ; (24, 16)
 
-
-;; Skeleton walk animation
+;; Skeleton attack animation
 SkelWalkAnimId:     .byte 2
 SkelWalkAnimSpeed:  .byte 6
 SkelWalkAnimFrames: .byte 6
@@ -202,5 +201,90 @@ SkelWalkFrame6:
   .byte 16, 149, 1, 16  ; (16, 16)
   .byte 16, 150, 1, 24  ; (24, 16)
 
+;; Skeleton attack animation
+SkelAttackAnimId:     .byte 3
+SkelAttackAnimSpeed:  .byte 6
+SkelAttackAnimFrames: .byte 6
+SkelAttackAnimPtr:
+  .word SkelAttackFrame1, SkelAttackFrame2, SkelAttackFrame3, SkelAttackFrame4
+  .word SkelAttackFrame5, SkelAttackFrame6
+SkelAttackFrame1:
+  .byte  0,  91, 1,  0  ; (0, 0)
+  .byte  0,  92, 1,  8  ; (8, 0)
+  .byte  0,  93, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8,  94, 1,  0  ; (0, 8)
+  .byte  8,  95, 1,  8  ; (8, 8)
+  .byte  8,  96, 1, 16  ; (16, 8)
+  .byte  8,  97, 1, 24  ; (24, 8)
+  .byte 16,   0, 1,  0  ; (0, 16)
+  .byte 16,  98, 1,  8  ; (8, 16)
+  .byte 16,  99, 1, 16  ; (16, 16)
+  .byte 16, 100, 1, 24  ; (24, 16)
+SkelAttackFrame2:
+  .byte  0, 101, 1,  0  ; (0, 0)
+  .byte  0, 102, 1,  8  ; (8, 0)
+  .byte  0, 103, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8, 104, 1,  0  ; (0, 8)
+  .byte  8, 105, 1,  8  ; (8, 8)
+  .byte  8, 106, 1, 16  ; (16, 8)
+  .byte  8, 107, 1, 24  ; (24, 8)
+  .byte 16,   0, 1,  0  ; (0, 16)
+  .byte 16, 108, 1,  8  ; (8, 16)
+  .byte 16, 109, 1, 16  ; (16, 16)
+  .byte 16, 110, 1, 24  ; (24, 16)
+SkelAttackFrame3:
+  .byte  0, 111, 1,  0  ; (0, 0)
+  .byte  0, 112, 1,  8  ; (8, 0)
+  .byte  0, 113, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8, 114, 1,  0  ; (0, 8)
+  .byte  8, 115, 1,  8  ; (8, 8)
+  .byte  8, 116, 1, 16  ; (16, 8)
+  .byte  8, 117, 1, 24  ; (24, 8)
+  .byte 16,   0, 1,  0  ; (0, 16)
+  .byte 16, 118, 1,  8  ; (8, 16)
+  .byte 16, 119, 1, 16  ; (16, 16)
+  .byte 16, 120, 1, 24  ; (24, 16)
+SkelAttackFrame4:
+  .byte  0, 121, 1,  0  ; (0, 0)
+  .byte  0, 122, 1,  8  ; (8, 0)
+  .byte  0, 123, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8, 124, 1,  0  ; (0, 8)
+  .byte  8, 125, 1,  8  ; (8, 8)
+  .byte  8, 126, 1, 16  ; (16, 8)
+  .byte  8, 127, 1, 24  ; (24, 8)
+  .byte 16,   0, 1,  0  ; (0, 16)
+  .byte 16, 128, 1,  8  ; (8, 16)
+  .byte 16, 129, 1, 16  ; (16, 16)
+  .byte 16, 130, 1, 24  ; (24, 16)
+SkelAttackFrame5:
+  .byte  0, 131, 1,  0  ; (0, 0)
+  .byte  0, 132, 1,  8  ; (8, 0)
+  .byte  0, 133, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8, 134, 1,  0  ; (0, 8)
+  .byte  8, 135, 1,  8  ; (8, 8)
+  .byte  8, 136, 1, 16  ; (16, 8)
+  .byte  8, 137, 1, 24  ; (24, 8)
+  .byte 16,   0, 1,  0  ; (0, 16)
+  .byte 16, 138, 1,  8  ; (8, 16)
+  .byte 16, 139, 1, 16  ; (16, 16)
+  .byte 16, 140, 1, 24  ; (24, 16)
+SkelAttackFrame6:
+  .byte  0, 141, 1,  0  ; (0, 0)
+  .byte  0, 142, 1,  8  ; (8, 0)
+  .byte  0, 143, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8, 144, 1,  0  ; (0, 8)
+  .byte  8, 145, 1,  8  ; (8, 8)
+  .byte  8, 146, 1, 16  ; (16, 8)
+  .byte  8, 147, 1, 24  ; (24, 8)
+  .byte 16,   0, 1,  0  ; (0, 16)
+  .byte 16, 148, 1,  8  ; (8, 16)
+  .byte 16, 149, 1, 16  ; (16, 16)
+  .byte 16, 150, 1, 24  ; (24, 16)
 .endif
 
