@@ -274,6 +274,5 @@ SkelAttackFrame5:
   .byte 16, 200, 1, 16  ; (16, 16)
   .byte 16,   0, 1, 24  ; (24, 16)
 
-
 .endif
 
