@@ -41,8 +41,9 @@
 
 .proc skel_update
   inc skel_timer
-  jsr check_joypad
+  jsr skel_check_joypad
   jsr skel_animate
+  jsr skel_reset_attack
   jsr skel_draw
   rts
 .endproc
@@ -177,24 +178,70 @@
   rts
 .endproc
 
-.proc check_joypad
+.proc skel_set_attack_anim
+  lda skel_cur_anim_id
+  cmp SkelAttackAnimId
+  beq @do_nothing
+  lda SkelAttackAnimFrames
+  sta skel_max_frames
+  lda SkelAttackAnimSpeed
+  sta skel_anim_speed
+  lda #<SkelAttackAnimPtr
+  sta skel_cur_anim_ptr
+  lda #>SkelAttackAnimPtr
+  sta skel_cur_anim_ptr + 1
+  lda #0
+  sta skel_cur_frame_idx
+  lda SkelAttackAnimId
+  sta skel_cur_anim_id
+  @do_nothing:
+  rts
+.endproc
+
+.proc skel_reset_attack
+  lda skel_cur_anim_id
+  cmp SkelAttackAnimId
+  bne @done
+  lda skel_cur_frame_idx
+  clc
+  adc #1
+  cmp skel_max_frames
+  bne @done
+  jmp skel_set_idle_anim
+  @done:
+  rts
+.endproc
+
+.proc skel_check_joypad
+  lda skel_cur_anim_id
+  cmp SkelAttackAnimId
+  bne @check_controls
+  rts
+
+@check_controls:
   jsr joypad1_read       ; Read the joypad state
+  lda joypad1_state      ; Load the joypad state
+  and #BUTTON_A          ; Isolate A button bit
+  bne @attack            ; If A button is pressed, attack
   lda joypad1_state      ; Load the joypad state
   and #BUTTON_LEFT       ; Isolate the left button bit
   bne @move_left         ; If the left button is pressed, move left
   lda joypad1_state      ; Load the joypad state
   and #BUTTON_RIGHT      ; Isolate the right button bit
   bne @move_right        ; If the right button is pressed, move right
-  jmp skel_set_idle_anim
 
-@move_right:
-  inc skel_pos_x
-  lda #1
-  sta skel_flip
-  jmp skel_set_walk_anim
+  jmp skel_set_idle_anim ; Default to idle animation
+
+@attack:
+  jmp skel_set_attack_anim
 @move_left:
   dec skel_pos_x
   lda #0
+  sta skel_flip
+  jmp skel_set_walk_anim
+@move_right:
+  inc skel_pos_x
+  lda #1
   sta skel_flip
   jmp skel_set_walk_anim
 .endproc
