@@ -27,8 +27,8 @@
 palettes:
   ; Background Palettes
   .byte $0F, $4C, $00, $00   ; Background Palette 0
-  .byte $0F, $08, $2a, $2b   ; Background Palette 1
-  .byte $0F, $00, $00, $00   ; Background Palette 2
+  .byte $0F, $08, $2A, $2B   ; Background Palette 1
+  .byte $0F, $1A, $08, $0D   ; Background Palette 2
   .byte $0F, $00, $00, $00   ; Background Palette 3
 
   ; Sprite Palettes

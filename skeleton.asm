@@ -22,7 +22,7 @@
 .proc skel_init
   ldx #200
   stx skel_pos_x
-  ldx #150
+  ldx #168
   stx skel_pos_y
   lda #0
   sta skel_timer

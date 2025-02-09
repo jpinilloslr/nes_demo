@@ -14,14 +14,14 @@
 .segment "CODE"
 
 .proc alien_init
-  ldx #$80
-  stx alien_pos_x      ; Set X alien_position to 128
-  ldx #$30
-  stx alien_pos_y      ; Set Y position to 48
-  ldx #$01
+  ldx #10
+  stx alien_pos_x      ; Set X alien_position to 10
+  ldx #20
+  stx alien_pos_y      ; Set Y position to 20
+  ldx #01
   stx alien_acc_x      ; Set initial X velocity
   stx alien_acc_y      ; Set initial Y velocity
-  ldx #$00
+  ldx #00
   stx alien_frame      ; Set initial animation frame
   rts
 .endproc
@@ -80,8 +80,8 @@
   clc
   adc alien_acc_y        ; alien_pos_y += alien_acc_y
   sta alien_pos_y
-  cmp #224
-  bcs reverse_y_dir  ; Reverse if Y >= 224
+  cmp #184
+  bcs reverse_y_dir  ; Reverse if Y >= 168
   cmp #8
   bcc reverse_y_dir  ; Reverse if Y < 8
   rts
