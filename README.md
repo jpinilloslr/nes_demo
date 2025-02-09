@@ -2,6 +2,8 @@
 
 This is an NES demo to help me understand some of the inner workings of the NES architecture. It's also my humble tribute after visiting the Nintendo Development Center in Kyoto.
 
+![Screenshot](screenshot.png)
+
 ## Development environment
 
 Install ca65 and ld65 from the cc65 suite.
