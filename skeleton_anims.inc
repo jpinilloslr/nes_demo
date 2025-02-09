@@ -204,9 +204,10 @@ SkelWalkFrame6:
 ;; Skeleton attack animation
 SkelAttackAnimId:     .byte 3
 SkelAttackAnimSpeed:  .byte 6
-SkelAttackAnimFrames: .byte 3
+SkelAttackAnimFrames: .byte 5
 SkelAttackAnimPtr:
-  .word SkelAttackFrame1, SkelAttackFrame2 
+  .word SkelAttackFrame1, SkelAttackFrame2, SkelAttackFrame3
+  .word SkelAttackFrame4, SkelAttackFrame5
 SkelAttackFrame1:
   .byte  0, 151, 1,  0  ; (0, 0)
   .byte  0, 152, 1,  8  ; (8, 0)
@@ -233,6 +234,46 @@ SkelAttackFrame2:
   .byte 16, 168, 1,  8  ; (8, 16)
   .byte 16, 169, 1, 16  ; (16, 16)
   .byte 16, 170, 1, 24  ; (24, 16)
+SkelAttackFrame3:
+  .byte  0, 171, 1,  0  ; (0, 0)
+  .byte  0, 172, 1,  8  ; (8, 0)
+  .byte  0, 173, 1, 16  ; (16, 0)
+  .byte  0, 174, 1, 24  ; (24, 0)
+  .byte  8, 175, 1,  0  ; (0, 8)
+  .byte  8, 176, 1,  8  ; (8, 8)
+  .byte  8, 177, 1, 16  ; (16, 8)
+  .byte  8, 178, 1, 24  ; (24, 8)
+  .byte 16, 179, 1,  0  ; (0, 16)
+  .byte 16, 180, 1,  8  ; (8, 16)
+  .byte 16, 181, 1, 16  ; (16, 16)
+  .byte 16, 182, 1, 24  ; (24, 16)
+SkelAttackFrame4:
+  .byte  0, 183, 1,  0  ; (0, 0)
+  .byte  0, 184, 1,  8  ; (8, 0)
+  .byte  0, 185, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8, 186, 1,  0  ; (0, 8)
+  .byte  8, 187, 1,  8  ; (8, 8)
+  .byte  8, 188, 1, 16  ; (16, 8)
+  .byte  8,   0, 1, 24  ; (24, 8)
+  .byte 16, 189, 1,  0  ; (0, 16)
+  .byte 16, 190, 1,  8  ; (8, 16)
+  .byte 16, 191, 1, 16  ; (16, 16)
+  .byte 16, 192, 1, 24  ; (24, 16)
+SkelAttackFrame5:
+  .byte  0, 193, 1,  0  ; (0, 0)
+  .byte  0, 194, 1,  8  ; (8, 0)
+  .byte  0, 195, 1, 16  ; (16, 0)
+  .byte  0,   0, 1, 24  ; (24, 0)
+  .byte  8, 196, 1,  0  ; (0, 8)
+  .byte  8, 197, 1,  8  ; (8, 8)
+  .byte  8, 198, 1, 16  ; (16, 8)
+  .byte  8,   0, 1, 24  ; (24, 8)
+  .byte 16,   0, 1,  0  ; (0, 16)
+  .byte 16, 199, 1,  8  ; (8, 16)
+  .byte 16, 200, 1, 16  ; (16, 16)
+  .byte 16,   0, 1, 24  ; (24, 16)
+
 
 .endif
 
