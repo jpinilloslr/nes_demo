@@ -43,8 +43,8 @@
   inc skel_timer
   jsr skel_check_joypad
   jsr skel_animate
-  jsr skel_reset_attack
   jsr skel_draw
+  jsr skel_reset_attack
   rts
 .endproc
 
