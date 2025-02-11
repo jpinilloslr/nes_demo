@@ -14,7 +14,7 @@
 .segment "CODE"
 
 .proc alien_init
-  ldx #10
+  ldx #20
   stx alien_pos_x      ; Set X alien_position to 10
   ldx #20
   stx alien_pos_y      ; Set Y position to 20
@@ -48,13 +48,13 @@
 .endproc
 
 .proc alien_animate
-  lda alien_anim_timer  ; Load animation timer
-  clc                   ; Clear carry
-  adc #1                ; Increment timer
-  sta alien_anim_timer  ; Store updated timer
+  lda alien_anim_timer
+  clc
+  adc #1
+  sta alien_anim_timer  ; Increment timer
   and #$0F              ; Update every 16 frames
-  bne @no_update        ; If not 0, skip frame update
-  lda alien_frame       ; Load current frame
+  bne @no_update
+  lda alien_frame
   clc
   adc #1
   sta alien_frame
@@ -69,16 +69,16 @@
 .proc alien_move
   lda alien_pos_x
   clc
-  adc alien_acc_x        ; alien_pos_x += alien_acc_x
+  adc alien_acc_x    ; alien_pos_x += alien_acc_x
   sta alien_pos_x
   cmp #248
   bcs reverse_x_dir  ; Reverse if X >= 248
-  cmp #0
-  bcc reverse_x_dir  ; Reverse if X < 0
+  cmp #16
+  bcc reverse_x_dir  ; Reverse if X < 16
 
   lda alien_pos_y
   clc
-  adc alien_acc_y        ; alien_pos_y += alien_acc_y
+  adc alien_acc_y    ; alien_pos_y += alien_acc_y
   sta alien_pos_y
   cmp #184
   bcs reverse_y_dir  ; Reverse if Y >= 168
@@ -89,9 +89,9 @@
 
 .proc reverse_x_dir
   lda alien_acc_x
-  eor #$ff               ; Flip bits (negate value)
+  eor #$ff           ; Flip bits (negate value)
   clc
-  adc #$01               ; Convert -1 to 1 or 1 to -1
+  adc #$01           ; Convert -1 to 1 or 1 to -1
   sta alien_acc_x
   rts
 .endproc
